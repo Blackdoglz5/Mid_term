@@ -1,12 +1,35 @@
 
+<div class="container-fluid">
+     <div class="row">
+      <div class="col-sm-4">
+      	<div class="panel panel-default" class="item" ng-repeat="item in beer.style.data">
+      <!-- create function in controller to change current page/straing page-->
 
-<div class="item" ng-repeat="item in beer.menu">
-	<div class="col-sm-4">
-      <div class="panel panel-default">
-        <div class="panel-heading">{{ beer.name }}</div>
-        <div class="panel-body"><{{ beer.label(icon) }}></div>
-        <div class="panel-footer">{{ beer.brewery }}</div>
+       		 <div class="panel-heading">
+        {{ beer.style.data[$index].breweries["0"].name }}
+        	</div>
+
+        <div class="panel-body">
+        <img ng-src="{{ beer.style.data[$index].labels.medium }}"></div>
+
+        <div class="panel-footer">
+        {{ beer.style.data[$index].name }} abv: {{beer.style.data["0"].abv}}%</div>
+
+        </div>
       </div>
+     
     </div>
 </div>
 
+<!-- Pagination of results -->
+
+<br><br><br>
+<ul class="pager">
+  <li><a href="#/menu">Previous</a></li>
+  		<li><a href="#/menu1">1</a></li>
+  		<li><a href="#/menu2">2</a></li>
+  		<li><a href="#/menu3">3</a></li>
+  		<li><a href="#/menu4">4</a></li>
+  		<li><a href="#/menu5">5</a></li>
+  <li><a href="#/menu">Next</a></li>
+</ul>

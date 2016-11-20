@@ -3,17 +3,27 @@
 <head>
 <title>Thirsty</title>
 <!-- script sources -->
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <meta charset="utf-10">
+  <meta name="thirsty" content="width=device-width, initial-scale=1"> 
+<!-- Jquery -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.min.js"></script>
+<!-- Bootstrap -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<!-- Angular -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.js"></script>
+<!-- Angular Router -->
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
 <!-- page links -->
-  <script type="text/javascript" src="main.js"></script>
+  <script src="main.js"></script>
   <script src="controller1.js"></script>
-  <script src="productSnippet"></script>
+  <script src="router.js"></script>
+
+  <link rel="stylesheet" type="text/html" href="home.html">
+  <link rel="stylesheet" type="text/html" href="productSnippet.html"> 
+  <link rel="stylesheet" type="text/html" href="about.html">
   <link rel="stylesheet" type="text/css" href="main.css">
+
 
 </head>
 
@@ -86,102 +96,77 @@
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
-        <li><a href="#">Home</a></li>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Find a Store</a></li>
+        <li><a href='#/'>Home</a></li>
+        <li><a href="#/about">About</a></li>
+        <li><a href="#/">Find a Store</a></li>
 
 <!-- Dropdown beer style menu -->
   
     <li class="nav-item dropdown">
-      <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button">Choose a Beer Style <span class="caret"></span></a>
+      <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#/" role="button">Choose a Beer Style <span class="caret"></span></a>
       <div class="dropdown-menu">
-      <form ng-submit="beer.searchGold()">
-          <a class="dropdown-item" type="button" href="#">Golden Ales</a>
+
+      <form ng-click="beer.searchGold()">
+          <a class="dropdown-item" type="button" href="#/menu">Golden Ales</a>
       </form>
+
         <div class="dropdown-divider"></div>
-          <a class="dropdown-item" type="button" href="#">Pale Ales</a>
+
+      <form ng-click="beer.searchPale()">
+          <a class="dropdown-item" type="button" href="#/menu">Pale Ales</a></form>
+
         <div class="dropdown-divider"></div>
-          <a class="dropdown-item" type="button" href="#">IPAs</a>
+
+        <form ng-click="beer.searchIPA()">
+          <a class="dropdown-item" type="button" href="#/menu">IPAs</a></form>
+
         <div class="dropdown-divider"></div>
-          <a class="dropdown-item" type="button" href="#">Porters</a>
+
+        <form ng-click="beer.searchPorter()">
+          <a class="dropdown-item" type="button" href="#/menu">Porters</a></form>
+
         <div class="dropdown-divider"></div>
-          <a class="dropdown-item" type="button" href="#">Stouts</a>
+
+        <form ng-click="beer.searchStout()">
+          <a class="dropdown-item" type="button" href="#/menu">Stouts</a></form>
+
         <div class="dropdown-divider"></div>
-          <a class="dropdown-item" type="button" href="#">Fruit Beers</a>
+
+        <form ng-click="beer.searchFruit()">
+          <a class="dropdown-item" type="button" href="#/menu">Fruit Beers</a></form>
+
         <div class="dropdown-divider"></div>
-          <a class="dropdown-item" type="button" href="#">Sours/Wild Beers</a>
+
+        <form ng-click="beer.searchSour()">
+          <a class="dropdown-item" type="button" href="#/menu">Sours/Wild Beers</a></form>
+
         <div class="dropdown-divider"></div>
-          <a class="dropdown-item" type="button" href="#">Barrel Aged Beers</a>
-    </div>
-  </li>
-      </ul>
-     <!-- Right side of Nav bar with Login $ checkout -->
+
+        <form ng-click="beer.searchBarrel()">
+          <a class="dropdown-item" type="button" href="#/menu">Barrel Aged Beers</a></form>
+
+      </div>
+    </li>
+  </ul>
+<!-- Right side of Nav bar with Login $ checkout -->
       <ul class="nav navbar-nav navbar-right">
-      	<li><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span>Check Out</a></li>
-        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+      	<li><a href="#/"><span class="glyphicon glyphicon-shopping-cart"></span>Check Out</a></li>
+        <li><a href="#/"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
       </ul>
     </div>
   </div>
 </nav>
-<!-- List of Products  -->
+<!-- Router Pages *home* *about* *stores* *list of products*  -->
 <br><br>
 <ng-view>
 
 </ng-view>
-<div class="container">
-  <div class="row">
-    <div class="col-sm-4">
-      <div class="panel panel-default">
-        <div class="panel-heading">Porter</div>
-        <div class="panel-body"><img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image"></div>
-        <div class="panel-footer">Black Butte Porter</div>
-      </div>
-    </div>
-    <div class="col-sm-4">
-      <div class="panel panel-default">
-        <div class="panel-heading">Stout</div>
-        <div class="panel-body"><img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image"></div>
-        <div class="panel-footer">Firestone-Walker Velvet Merlin</div>
-      </div>
-    </div>
-    <div class="col-sm-4">
-      <div class="panel panel-default">
-        <div class="panel-heading">India Pale Ale</div>
-        <div class="panel-body"><img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image"></div>
-        <div class="panel-footer">Avery IPA</div>
-      </div>
-    </div>
-  </div>
-</div><br>
+<br><br>
 
-<div class="container">
-  <div class="row">
-    <div class="col-sm-4">
-      <div class="panel panel-default">
-        <div class="panel-heading">{{ beer.name }}</div>
-        <div class="panel-body"><img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image"></div>
-        <div class="panel-footer">{{ brewery.name }}</div>
-      </div>
-    </div>
-    <div class="col-sm-4">
-      <div class="panel panel-default">
-        <div class="panel-heading">{{beer.name}}</div>
-        <div class="panel-body"><img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image"></div>
-        <div class="panel-footer">{{brewery.name}}</div>
-      </div>
-    </div>
-    <div class="col-sm-4">
-      <div class="panel panel-default">
-        <div class="panel-heading">{{beer.name}}</div>
-        <div class="panel-body"><img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image"></div>
-        <div class="panel-footer">{{brewery.name}}</div>
-      </div>
-    </div>
-  </div>
-</div><br><br>
-
+<!-- Footer -->
+<br><br>
 <footer class="container-fluid text-center">
-  <p>So much stuff in the footer</p>
+  <p>Before they sold out craft beer banh mi iPhone, chartreuse viral yr squid williamsburg street art. Tofu lumbersexual distillery, pinterest before they sold out af pok pok kombucha shoreditch thundercats venmo affogato disrupt farm-to-table.</p>
 </footer>
 
 </html>

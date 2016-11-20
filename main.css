@@ -8,21 +8,42 @@ body {
 }
     
     /* Add a gray background color and some padding to the footer */
-    footer {
-      color: #9d9d9d;
-      background-color:#222222 ;
-      padding: 25px;
-    }
+footer {
+  color: #9d9d9d;
+  background-color:#222222 ;
+  padding: 25px;
+}
     
-  .carousel-inner img {
-      width: 100%; /* Set width to 100% */
-      margin: auto;
-      min-height:200px;
+.carousel-inner img {
+  width: 100%;
+  margin: auto;
+  min-height:200px;
+}
+body > ng-view > div {
+  color: white;
+
+}
+body > ng-view > div > h1 {
+    color: white;
+  }
+/*body > ng-view > div > div {
+  display: inline-block;
+}*/
+
+body > ng-view > div > div > div > div > div.panel-body.ng-binding {
+    background-color:#222222; 
+  }
+body > ng-view > div > div > div > div > div.panel-heading.ng-binding {
+    background-color:#9d9d9d; 
+  }
+body > ng-view > div > div > div > div > div.panel-footer.ng-binding {
+    background-color:#9d9d9d; 
   }
 
-  /* Hide the carousel text when the screen is less than 600 pixels wide */
-  @media (max-width: 600px) {
-    .carousel-caption {
-      display: none;
+/* Hide the carousel text when the screen is less than 600 pixels wide */
+@media (max-width: 600px) {
+.carousel-caption {
+  display: none;
     }
   }
+  

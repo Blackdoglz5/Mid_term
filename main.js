@@ -1,1 +1,1 @@
-var mainModule = angular.module("Thirsty", []);
+var mainModule = angular.module("Thirsty", ["ngRoute"]);
