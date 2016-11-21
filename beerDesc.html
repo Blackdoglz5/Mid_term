@@ -1,0 +1,21 @@
+
+<div id="information" class="container-fluid" ng-repeat="item in beer.style.data | limitTo: [$index]">
+
+	<h2>{{ beer.style.data[$index].name}}</h2>
+	<h4> {{ beer.style.data[$index].breweries["0"].name }} - {{ beer.style.data[$index].breweries["0"].locations["0"].region }}</h4><h5> {{ beer.style.data[$index].breweries["0"].locations["0"].website }}
+	</h5><br>
+	
+	<p>
+	Description:<br> {{ beer.style.data[$index].description }}<br><br>
+	Style:<br> {{beer.style.data[$index].style.description }}<br><br>
+	ABV: {{beer.style.data[$index].abv}}%<br>
+	Original Gravity: {{ beer.style.data[$index].style.ogMin}}<br>
+	Final Gravity: {{ beer.style.data[$index].style.fgMax}}<br>
+	IBU: {{ beer.style.data[$index].ibu}}<br>
+	SRM: {{ beer.style.data[$index].srmId}}
+	</p>
+	
+
+
+
+</div>

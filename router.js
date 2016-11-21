@@ -13,4 +13,8 @@ function Router($routeProvider) {
             templateUrl:'/productSnippet.html'})
         .when('/about', {
         	templateUrl:'/about.html'})
+        .when('/find', {
+        	templateUrl: '/find.html'})
+        .when('/beerDesc', {
+        	templateUrl: '/beerDesc.html'})
     }

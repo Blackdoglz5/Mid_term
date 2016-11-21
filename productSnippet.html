@@ -1,35 +1,44 @@
 
 <div class="container-fluid">
      <div class="row">
-      <div class="col-sm-4">
-      	<div class="panel panel-default" class="item" ng-repeat="item in beer.style.data">
-      <!-- create function in controller to change current page/straing page-->
+      <div class="col-md-3 col-sm-6" ng-repeat="item in beer.style.data | limitTo : pCtrl.pageSize : pCtrl.pageIndex()">
+      	<div class="panel panel-default" class="button" ng-click="beerDesc= !beerDesc">
+		
 
-       		 <div class="panel-heading">
+       	<div class="panel-heading">
         {{ beer.style.data[$index].breweries["0"].name }}
-        	</div>
+        </div>
 
         <div class="panel-body">
-        <img ng-src="{{ beer.style.data[$index].labels.medium }}"></div>
+        <div class="well" ng-show="beerDesc">{{beer.style.data[$index].description}}
+        <a href="#/beerDesc" type="link">Further Information</a></div>
+
+        <img ng-src="{{ beer.style.data[$index].labels.medium }}"
+        ng-hide="beerDesc" ></div>
 
         <div class="panel-footer">
-        {{ beer.style.data[$index].name }} abv: {{beer.style.data["0"].abv}}%</div>
-
+        {{ beer.style.data[$index].name }}   abv: {{beer.style.data[$index].abv}}%</div>
+        
+      	
+        </div>
         </div>
       </div>
-     
-    </div>
-</div>
+     </div>
+   
+   
+
 
 <!-- Pagination of results -->
 
 <br><br><br>
-<ul class="pager">
-  <li><a href="#/menu">Previous</a></li>
-  		<li><a href="#/menu1">1</a></li>
-  		<li><a href="#/menu2">2</a></li>
-  		<li><a href="#/menu3">3</a></li>
-  		<li><a href="#/menu4">4</a></li>
-  		<li><a href="#/menu5">5</a></li>
-  <li><a href="#/menu">Next</a></li>
-</ul>
+<div class="pagination" ng-repeat="item in beer.style.data | limitTo : pCtrl.pageSize : pCtrl.pageIndex()">
+<ul>
+        
+        <li ng-repeat="(thingIndex, thing) in pCtrl.things | limitTo : pCtrl.pageSize : pCtrl.pageIndex()">>{{thing}} - {{thingIndex}}</li>
+    </ul>
+
+    <ul>
+        <li ng-repeat="page in pCtrl.makePages()" ng-click="pCtrl.setPage($index + 1)">{{$index + 1}}</li>
+    </ul>
+ </div>
+

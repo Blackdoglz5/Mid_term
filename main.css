@@ -20,8 +20,13 @@ footer {
   min-height:200px;
 }
 body > ng-view > div {
-  color: white;
-
+  color: black;
+}
+div.container-fluid.ng-scope{
+  color:white;
+}
+body > ng-view > div.container-fluid.ng-scope > div > div > div > div.panel-body > div {
+  color:black;
 }
 body > ng-view > div > h1 {
     color: white;
@@ -30,15 +35,24 @@ body > ng-view > div > h1 {
   display: inline-block;
 }*/
 
-body > ng-view > div > div > div > div > div.panel-body.ng-binding {
-    background-color:#222222; 
+ 
+div.panel-body {
+    background-color:#222222;
+
   }
-body > ng-view > div > div > div > div > div.panel-heading.ng-binding {
+div.panel-heading.ng-binding {
     background-color:#9d9d9d; 
   }
-body > ng-view > div > div > div > div > div.panel-footer.ng-binding {
-    background-color:#9d9d9d; 
+div.panel-footer.ng-binding {
+    background-color:#9d9d9d;
   }
+
+body > ng-view > h3 {
+  color:white;
+}
+body > ng-view > form {
+  color:white;
+}
 
 /* Hide the carousel text when the screen is less than 600 pixels wide */
 @media (max-width: 600px) {

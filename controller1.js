@@ -3,12 +3,14 @@ mainModule
 
 		var beer = this;
 		beer.search = [];
+		// toggle for beer descriptionbeer
+		$http.beerDesc = false;
 
 
 	console.log("Finding Beer!");
-	beer.pageIndex = function () {
-		return (beer.currentPage - 1) * beer.pageSize
-	}
+	// beer.pageIndex = function () {
+	// 	return (beer.currentPage - 1) * beer.pageSize
+	// }
 
 	beer.searchGold = function () {
 		$http.get("http://api.brewerydb.com/v2/beers/?key=dada1aa94d3bfdbbd1c2e6efd9a6f2c7&format=json&styleId=36&withBreweries=y&hasLabels=y").then(
@@ -98,6 +100,8 @@ mainModule
 				console.log(err)
 			});
 	}
+	
+
 	});
 	//  style id #s = golden ale = 36
 	// 				pale ale = 25
