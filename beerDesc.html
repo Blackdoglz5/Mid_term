@@ -1,21 +1,27 @@
 
-<div id="information" class="container-fluid" ng-repeat="item in beer.style.data | limitTo: currentPage">
+<div id="information" class="container-fluid"> 
+	<div ng-repeat="item in beer.style.data | limitTo: 1 : info">
 
-	<img ng-src="{{ beer.style.data[$index].labels.icon }}"><h2>{{ beer.style.data[$index].name}}</h2>
-	<h4> {{ beer.style.data[$index].breweries["0"].name }} - {{ beer.style.data[$index].breweries["0"].locations["0"].region }}</h4><h5 <a href="#" type="link"> {{ beer.style.data[$index].breweries["0"].locations["0"].website }}</a>
-	</h5><br>
+		<img ng-src="{{ beer.style.data[$index].labels.icon }}"><h2>{{ beer.style.data[$index].name}}</h2>
+		<h4> {{ beer.style.data[$index].breweries["0"].name }} - {{ beer.style.data[$index].breweries["0"].locations["0"].region }}</h4><h5 <a href="#" type="link"> {{ beer.style.data[$index].breweries["0"].locations["0"].website }}</a>
+		</h5><br>
 	
 	<p>
-	Description:<br> {{ beer.style.data[$index].description }}<br><br>
-	Style:<br> {{beer.style.data[$index].style.description }}<br><br>
-	ABV: {{beer.style.data[$index].abv}}%<br>
-	Original Gravity: {{ beer.style.data[$index].style.ogMin}}<br>
-	Final Gravity: {{ beer.style.data[$index].style.fgMax}}<br>
-	IBU: {{ beer.style.data[$index].ibu}}<br>
-	SRM: {{ beer.style.data[$index].srmId}}
+		Description:<br> {{ beer.style.data[$index].description }}<br><br>
+		Style:<br> {{beer.style.data[$index].style.description }}<br><br>
+		ABV: {{beer.style.data[$index].abv}}%<br>
+		Original Gravity: {{ beer.style.data[$index].style.ogMin}}<br>
+		Final Gravity: {{ beer.style.data[$index].style.fgMax}}<br>
+		IBU: {{ beer.style.data[$index].ibu}}<br>
+		SRM: {{ beer.style.data[$index].srmId}}
 	</p>
 	
+	
 
-
-
+	</div>
 </div>
+<ul ng-show="beer.style" class="pagination center">
+  <li><button ng-click="beer.prevPage()">Previous</button></li>
+  <li><button ng-click="beer.nextPage()">Next</button></li>
+  
+</ul>

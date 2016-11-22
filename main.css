@@ -37,7 +37,12 @@ body > ng-view > div > h1 {
 div.text-center.ng-scope{
   color: white;
 }
- 
+div.panel {
+    transition: box-shadow 0.5s;
+}
+div.panel:hover {
+    box-shadow: 5px 0px 40px rgba(0,0,0, .2);
+}
 div.panel-body {
     background-color:#222222;
 
@@ -55,6 +60,7 @@ body > ng-view > h3 {
 body > ng-view > form {
   color:white;
 }
+
 
 /* Hide the carousel text when the screen is less than 600 pixels wide */
 @media (max-width: 600px) {

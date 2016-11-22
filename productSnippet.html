@@ -1,7 +1,7 @@
 
 <div class="container-fluid">
      <div class="row">
-      <div class="col-md-3 col-sm-6 modal fade" ng-repeat="item in beer.style.data | limitTo : pCtrl.pageSize : pCtrl.pageIndex()">
+      <div class="col-md-3 col-sm-6" ng-repeat="item in beer.style.data ">
       	<div class="panel panel-default" class="button" ng-click="beerDesc= !beerDesc">
 		
 
@@ -11,7 +11,7 @@
 
         <div class="panel-body">
         	<div class="well" ng-show="beerDesc">{{beer.style.data[$index].description}}
-        	<a href="#/beerDesc" type="link" ng-model="currentPage">Further Information</a></div>
+        	<a href="#/beerDesc" type="link" ng-model="info">Further Information</a></div>
 
         	<img ng-src="{{ beer.style.data[$index].labels.medium }}"
         	ng-hide="beerDesc" >
