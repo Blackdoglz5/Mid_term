@@ -20,27 +20,35 @@
     <div id="map"></div>
     <script>
       function initMap() {
-        var boulder = {lat: 40.0150, lng: -105.2705};
+      
         var map = new google.maps.Map(document.getElementById('map'), {
           zoom: 8,
-          center: boulder
+          center: {lat: 40.0150, lng: -105.2705}
          
         });
-        var marker = new google.maps.Marker({
-          position: boulder,
-          map: map
-        });
-        window.eqfeed_callback = function(results) {
-        for (var i = 0; i < results.features.length; i++) {
-          var coords = results.features[i].geometry.coordinates;
-          var latLng = new google.maps.LatLng(coords[1],coords[0]);
-          var marker = new google.maps.Marker({
-            position: latLng,
-            map: map
-          });
+        var infoWindow = new google.maps.InfoWindow({map: map});
+
+  // Try HTML5 geolocation.
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function(position) {
+      var pos = {
+        lat: position.coords.latitude,
+        lng: position.coords.longitude
+      };
+
+      infoWindow.setPosition(pos);
+      infoWindow.setContent('You are here!');
+      map.setCenter(pos);
+    }, function() {
+      handleLocationError(true, infoWindow, map.getCenter());
+    });
+  } else {
+    // Browser doesn't support Geolocation
+    handleLocationError(false, infoWindow, map.getCenter());
+  
         }
       }
-      }
+      
     </script>
     <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCJrzLCb2fNXeoR7y50E--vDLHf8I59p9Y&callback=initMap">

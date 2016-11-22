@@ -34,7 +34,9 @@ body > ng-view > div > h1 {
 /*body > ng-view > div > div {
   display: inline-block;
 }*/
-
+div.text-center.ng-scope{
+  color: white;
+}
  
 div.panel-body {
     background-color:#222222;

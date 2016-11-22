@@ -5,12 +5,47 @@ mainModule
 		beer.search = [];
 		// toggle for beer descriptionbeer
 		$http.beerDesc = false;
+		beer.currentPage = 1;
 
 
 	console.log("Finding Beer!");
 	// beer.pageIndex = function () {
 	// 	return (beer.currentPage - 1) * beer.pageSize
 	// }
+
+	beer.prevPage = function() {
+		if(beer.currentPage > 1){
+			beer.currentPage--;
+
+			beer.searchStyle(beer.styleId);
+		} else {
+			console.log("Can't go back!");
+		}
+	}
+
+	beer.nextPage = function() {
+		if(beer.currentPage < beer.style.numberOfPages){
+			beer.currentPage++;
+
+			beer.searchStyle(beer.styleId);
+		} else {
+			console.log("Can't go forward!");
+		}
+	}
+
+	beer.searchStyle = function(style) {
+		beer.styleId = style;
+
+		$http.get("http://api.brewerydb.com/v2/beers/?key=dada1aa94d3bfdbbd1c2e6efd9a6f2c7&format=json&styleId="+style+"&withBreweries=y&hasLabels=y&p="+beer.currentPage).then(
+			function successCallback(res) {
+				beer.style = res.data;
+
+				console.log(res.data);
+				},
+				function errorCallback(err) {
+				console.log(err)
+			});
+	}
 
 	beer.searchGold = function () {
 		$http.get("http://api.brewerydb.com/v2/beers/?key=dada1aa94d3bfdbbd1c2e6efd9a6f2c7&format=json&styleId=36&withBreweries=y&hasLabels=y").then(

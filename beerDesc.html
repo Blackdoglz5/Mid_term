@@ -1,8 +1,8 @@
 
-<div id="information" class="container-fluid" ng-repeat="item in beer.style.data | limitTo: [$index]">
+<div id="information" class="container-fluid" ng-repeat="item in beer.style.data | limitTo: currentPage">
 
-	<h2>{{ beer.style.data[$index].name}}</h2>
-	<h4> {{ beer.style.data[$index].breweries["0"].name }} - {{ beer.style.data[$index].breweries["0"].locations["0"].region }}</h4><h5> {{ beer.style.data[$index].breweries["0"].locations["0"].website }}
+	<img ng-src="{{ beer.style.data[$index].labels.icon }}"><h2>{{ beer.style.data[$index].name}}</h2>
+	<h4> {{ beer.style.data[$index].breweries["0"].name }} - {{ beer.style.data[$index].breweries["0"].locations["0"].region }}</h4><h5 <a href="#" type="link"> {{ beer.style.data[$index].breweries["0"].locations["0"].website }}</a>
 	</h5><br>
 	
 	<p>

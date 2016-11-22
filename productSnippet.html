@@ -1,7 +1,7 @@
 
 <div class="container-fluid">
      <div class="row">
-      <div class="col-md-3 col-sm-6" ng-repeat="item in beer.style.data | limitTo : pCtrl.pageSize : pCtrl.pageIndex()">
+      <div class="col-md-3 col-sm-6 modal fade" ng-repeat="item in beer.style.data | limitTo : pCtrl.pageSize : pCtrl.pageIndex()">
       	<div class="panel panel-default" class="button" ng-click="beerDesc= !beerDesc">
 		
 
@@ -10,11 +10,12 @@
         </div>
 
         <div class="panel-body">
-        <div class="well" ng-show="beerDesc">{{beer.style.data[$index].description}}
-        <a href="#/beerDesc" type="link">Further Information</a></div>
+        	<div class="well" ng-show="beerDesc">{{beer.style.data[$index].description}}
+        	<a href="#/beerDesc" type="link" ng-model="currentPage">Further Information</a></div>
 
-        <img ng-src="{{ beer.style.data[$index].labels.medium }}"
-        ng-hide="beerDesc" ></div>
+        	<img ng-src="{{ beer.style.data[$index].labels.medium }}"
+        	ng-hide="beerDesc" >
+        </div>
 
         <div class="panel-footer">
         {{ beer.style.data[$index].name }}   abv: {{beer.style.data[$index].abv}}%</div>
@@ -30,7 +31,7 @@
 
 <!-- Pagination of results -->
 
-<br><br><br>
+<!-- <br><br><br>
 <div class="pagination" ng-repeat="item in beer.style.data | limitTo : pCtrl.pageSize : pCtrl.pageIndex()">
 <ul>
         
@@ -40,5 +41,11 @@
     <ul>
         <li ng-repeat="page in pCtrl.makePages()" ng-click="pCtrl.setPage($index + 1)">{{$index + 1}}</li>
     </ul>
- </div>
+ </div> -->
+
+ <ul ng-show="beer.style" class="pagination">
+  <li><button ng-click="beer.prevPage()">Previous</button></li>
+  <li><button ng-click="beer.nextPage()">Next</button></li>
+  
+</ul>
 
